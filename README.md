@@ -1,5 +1,3 @@
-# riot-api-php
-#-Summoner Id and Other summoner data.
-#-Last match view
-#-Summoner League details
-#-Champion Mastery
+# riot-api-php			
+	
+Retrieving information from riot services with php
