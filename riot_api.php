@@ -1,12 +1,12 @@
 <?php 
 /*
 Oğuzhan Beyaz
-Api özellikleri 
+API
 
--Güncel sihirdar id ve diğer verilerini alma.
--Son Attığı maçları görüntüleme
--Lig detaylarını görüntüleme
--Oynadığı şampiyonların ustalıklarını görüntüleme
+-Summoner Data
+-Last Match 
+-League Details
+-Champion Mastery
 
 */
 class riotApi {
@@ -82,7 +82,7 @@ class riotApi {
 	}
 	public function getMatchReturn($platform,$matchId,$summonerId){
 
-        //Girilen Match idin bilgileri alındı tek maç
+        //Match Id check
 		$match = $this->getLastMatch($platform,$matchId);
 		$err = $match->status;
 		if ($err->status_code==404) {
@@ -92,9 +92,9 @@ class riotApi {
 			$err404 = "NoData";
 			return $err404;
 		}
-        //Stats bölümüne girildi
+        //Stats url inside
 		$matchDy = $match->participantIdentities;
-        //Sihirdarın bulunması
+        //Summoner search
 		$i = 0;
 
 
@@ -113,12 +113,12 @@ class riotApi {
 		$matchDy = $match->participants;
 		$particiId = $keys -1;
 
-        //Sihirdar bulundu 1 sayı çıkartıldı
+        //Summoner find and minus 1
 		$result_match = $matchDy[$particiId];
-        //Tüm Maç Bilgileri Getirildi
+        //All match details
 		$stats_match = $result_match->stats;
 
-        //Oynanan Şampiyon id si getirildi
+        //Play champion Id
 		$champId = $result_match->championId;
 
 		return ['statsMatch' => $stats_match,'championId' => $champId];
