@@ -1,6 +1,6 @@
 <?php 
 /*
-Oğuzhan Beyaz
+altai0g
 API
 
 -Summoner Data
